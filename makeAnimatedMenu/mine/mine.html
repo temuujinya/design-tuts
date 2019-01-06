@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <!-- <script src="main.js"></script> -->
+</head>
+<body>
+    <nav id="overlay">
+        <img class="close-btn" src="../img/close.svg" alt="">
+        <ul>
+            <li>
+                <a href="#">Home</a>
+                <span>about home</span>
+            </li>
+            <li>
+                <a href="#">Services</a>
+                <span>about services</span>
+            </li>
+            <li>
+                <a href="#">Contact us</a>
+                <span>about contact</span>
+            </li>
+            <li>
+                <a href="#">Contact us</a>
+                <span>about contact</span>
+            </li>
+            <li>
+                <a href="#">Contact us</a>
+                <span>about contact</span>
+            </li>
+            <li>
+                <a href="#">Contact us</a>
+                <span>about contact</span>
+            </li>
+            <li>
+                <a href="#">Contact us</a>
+                <span>about contact</span>
+            </li>
+            <li>
+                <a href="#">Contact us</a>
+                <span>about contact</span>
+            </li>
+        </ul>
+    </nav>
+    <header>
+        <a class="hd-logo" href="#">Doctor Temka</a>
+        <img class="open-btn" src="../img/menu.svg" alt="">
+    </header>
+    <section>
+        <h1>hello it's me who doctor</h1>
+    </section>
+
+
+    <script>
+        let overlay = document.querySelector("#overlay");
+        let openMenu = document.querySelector(".open-btn");
+        let closeMenu = document.querySelector(".close-btn");
+        openMenu.addEventListener("click",()=>{
+            overlay.classList.add("show-menu");
+        });
+
+        closeMenu.addEventListener("click",()=>{
+            overlay.classList.remove("show-menu");
+        });
+    </script>
+</body>
+</html>
