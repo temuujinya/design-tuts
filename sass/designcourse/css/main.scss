@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400');
+
+//sass map
+$colors:(
+    primary: #005DFF,
+    //TODO: research lighten and darken in css
+    primary-light:lighten(#005DFF, 40%),
+    primary-dark:darken(#005DFF, 40%),
+    accent: #FFF6BB
+);
+
+$padding: 15px;
+$borders: 15px;
+
+//TODO: research about sass function more
+//sass function
+@function getColor($color-name){
+    @return map-get($colors, $color-name);
+}
+
+
+$desktop: 720px;
+
+@mixin dekstop{
+  @media (min-width: #{$desktop}){
+    @content;
+  }
+}
+
+body, html{
+    height: 100%;
+    
+}
+
+body{
+    margin: 0;
+    font-family: 'Montserrat';
+    // background-color: map-get($colors, primary);
+
+    //sass nested
+    #bg{
+        //TODO: research more clip-path
+        clip-path: polygon(0 0, 100% 0, 100% 80%, 37% 100%, 0 100%, 0% 25%);
+        background-color: getColor(primary);
+        width: 100%;
+        height: 100%;
+        //TODO: research more about position
+        position: absolute;
+        //TODO: research z-index
+        z-index: -1;
+
+        @include dekstop{
+            clip-path: polygon(0 0, 75% 0, 56% 100%, 0% 100%);
+        }
+    }
+
+    header a{
+        font-size: 1.4em;
+        color: #fff;
+        text-decoration: none;
+        padding: $padding $padding;
+        text-transform: uppercase;
+    }
+}
+
+main{
+    //TODO: research 
+
+    @include dekstop{
+        display: grid;
+        grid-template-columns: 50% auto;
+        grid-template-areas: "primary card";
+    }
+
+    section#card{
+        background: #fff;
+        padding: 20px;
+        margin: 1em auto;
+        border-radius: $borders;
+        //TODO: research more box-shadow
+        box-shadow: 0 10px 30px rgba(0,0,0,.2);
+        width: 80%;
+   
+        @include dekstop{
+           grid-area: card; 
+           height: fit-content;
+           // TODO: ? align-self
+           align-self: center;
+           //TODO: ? em 
+           margin:1em;
+        }
+
+    ul{
+        list-style: none;
+        margin: 0; padding: 0;
+
+        li{
+            margin-bottom: 10px;
+
+            span{
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background-color: getColor(primary-light);
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+
+            strong{
+                display: inline-block;
+                //TODO: research max function in css
+                margin-left: max(40px);
+                margin-top: 10px;
+            }
+        }
+    }
+}
+    //TODO: research select tag with ids
+    section#primary{
+        color: #fff;
+        padding: $padding;
+        text-align: center;
+
+        @include dekstop{
+            grid-area: primary;
+            text-align: left;
+            //TODO: ? margin
+            margin: 4em 0 0 4em;
+        }
+
+        h1{
+            font-size: 3em;
+            margin-top: 10px;
+            text-transform: uppercase;
+
+            @include dekstop{
+                width: 30%;
+                font-size: 4em;
+                line-height: .9em;
+            }
+        }
+        
+        p{
+            font-size: 1.4em;
+        }
+
+        a{
+            color: getColor(primary-dark);
+            border-radius: $borders;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            background-color: getColor(accent);
+            display: block;
+            text-align: center;
+            margin: 50px auto 0 auto;
+            padding: $padding;
+
+            @include dekstop{
+                display: inline-block;
+                padding: $padding $padding*4;
+            }
+        }
+    }
+}
